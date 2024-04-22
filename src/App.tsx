@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react';
 
 export const App = () => {
   const [ data, setData ] = useState([]);
@@ -13,14 +13,12 @@ export const App = () => {
     };
 
     fetchData();
-  }, []);
-
-  console.log(data);
+  });
 
   return (
     <>
       <h1>Hello world</h1>
       {data.map(({ id, name }) => (<p key={id}>{name}</p>))}
     </>
-  )
-}
+  );
+};
