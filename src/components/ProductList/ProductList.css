@@ -1,0 +1,12 @@
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product-list__item {
+  box-sizing: border-box;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: calc(25% - 60px);
+}

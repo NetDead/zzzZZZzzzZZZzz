@@ -1,0 +1,21 @@
+.product-card {
+  --baseTextColor: #333;
+
+  border: 1px solid #ccc;
+  padding: 20px;
+  color: var(--baseTextColor);
+
+  h2 {
+    font: 20px/24px 'Arial', 'sans-serif';
+    margin: 0 0 20px;
+  }
+
+  p {
+    font: 16px/20px 'Arial', 'sans-serif';
+  }
+
+  b {
+    font-weight: normal;
+    color: color-mix(in srgb, var(--baseTextColor) 50%, white);
+  }
+}

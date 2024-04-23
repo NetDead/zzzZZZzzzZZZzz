@@ -1,4 +1,7 @@
 import { setupWorker } from 'msw/browser';
-import { handlers } from './handlers';
 
-export const worker = setupWorker(...handlers);
+import { productList } from 'src/mocks/product-list.ts';
+
+export const worker = setupWorker(
+  ...productList,
+);
