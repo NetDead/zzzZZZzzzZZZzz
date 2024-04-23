@@ -2,7 +2,7 @@ import eslint from "@eslint/js";
 import tsEslint from 'typescript-eslint';
 // TODO: enable after merging https://github.com/facebook/react/pull/28773
 // import eslintPluginReactHooks from 'eslint-plugin-react-hooks';
-import slintPluginReactRefresh from 'eslint-plugin-react-refresh';
+import eslintPluginReactRefresh from 'eslint-plugin-react-refresh';
 import eslintPluginReact from 'eslint-plugin-react';
 import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginSwitchCase from 'eslint-plugin-switch-case';
@@ -12,7 +12,7 @@ export default [
   ...tsEslint.configs.recommended,
   {
     plugins: {
-      'react-refresh': slintPluginReactRefresh,
+      'react-refresh': eslintPluginReactRefresh,
       // TODO: enable after merging https://github.com/facebook/react/pull/28773
       // 'react-hooks': eslintPluginReactHooks,
       'switch-case': eslintPluginSwitchCase,
