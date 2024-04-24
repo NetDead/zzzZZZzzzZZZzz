@@ -10,6 +10,7 @@ import { Layout } from 'src/components/Layout';
 import { Catalog } from 'src/routes/Catalog';
 import { About } from 'src/routes/About';
 import { Contacts } from 'src/routes/Contacts';
+import { ErrorPage } from 'src/routes/ErrorPage';
 
 async function enableMocking() {
   const { worker } = await import('./mocks/browser');
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout/>,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: 'catalog',
