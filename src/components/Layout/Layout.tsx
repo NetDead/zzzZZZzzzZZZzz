@@ -17,5 +17,5 @@ export const Layout = () => {
         {`© ${new Date().getFullYear()}`}
       </footer>
     </>
-  )
-}
+  );
+};

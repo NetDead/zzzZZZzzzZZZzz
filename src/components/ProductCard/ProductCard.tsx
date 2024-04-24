@@ -36,5 +36,5 @@ export const ProductCard: React.FC<ProductCardProps> = props => {
 
         <p><b>Roast:</b> {roast}</p>
     </div>
-  )
+  );
 };

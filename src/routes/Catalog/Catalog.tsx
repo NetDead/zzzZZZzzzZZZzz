@@ -15,7 +15,7 @@ const Catalog: React.FC = () => {
     };
 
     fetchData();
-  }, []);
+  });
 
   return (
     <>
@@ -23,7 +23,7 @@ const Catalog: React.FC = () => {
 
       <ProductList data={data}/>
     </>
-  )
+  );
 };
 
 export { Catalog };
