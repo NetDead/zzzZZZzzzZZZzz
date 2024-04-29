@@ -16,9 +16,11 @@ import { Contacts } from 'src/routes/Contacts';
 import { ErrorPage } from 'src/routes/ErrorPage';
 
 async function enableMocking() {
-  const { worker } = await import('./mocks/browser');
+  const { worker } = await import('./mocks/index');
 
-  return worker.start();
+  return worker.start({
+    onUnhandledRequest: 'bypass',
+  });
 }
 
 const router = createBrowserRouter([

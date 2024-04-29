@@ -5,7 +5,8 @@ import { PRODUCT_LIST } from 'src/mocks/entities/product-list';
 export const productList = [
   http.get('api/catalog', () => {
     return HttpResponse.json({
-      data: PRODUCT_LIST,
+      status: 'ok',
+      body: PRODUCT_LIST,
     });
-  })
+  }),
 ];
