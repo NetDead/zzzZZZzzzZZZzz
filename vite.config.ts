@@ -8,7 +8,13 @@ export default defineConfig({
     react(),
     tsconfigPaths(),
   ],
+  css: {
+    devSourcemap: true,
+  },
+  build: {
+    sourcemap: true,
+  },
   server: {
-    port: 8081,
+    port: 8080,
   },
 });
