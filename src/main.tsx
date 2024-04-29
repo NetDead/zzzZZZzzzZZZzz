@@ -14,6 +14,9 @@ import { Catalog } from 'src/routes/Catalog';
 import { About } from 'src/routes/About';
 import { Contacts } from 'src/routes/Contacts';
 import { ErrorPage } from 'src/routes/ErrorPage';
+import { Login } from 'src/routes/Login';
+
+import { fetchUser } from 'src/redux/user/userSlice';
 
 async function enableMocking() {
   const { worker } = await import('./mocks/index');
@@ -31,21 +34,28 @@ const router = createBrowserRouter([
     children: [
       {
         path: 'catalog',
-        element: <Catalog/>
+        element: <Catalog/>,
+        index: true,
       },
       {
         path: 'about',
-        element: <About/>
+        element: <About/>,
       },
       {
         path: 'contacts',
-        element: <Contacts/>
+        element: <Contacts/>,
       },
     ],
+  },
+  {
+    path: 'login',
+    element: <Login/>,
   },
 ]);
 
 enableMocking().then(() => {
+  store.dispatch(fetchUser());
+
   createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
       <Provider store={store}>
