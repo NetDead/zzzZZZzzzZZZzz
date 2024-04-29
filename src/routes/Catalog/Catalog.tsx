@@ -6,16 +6,14 @@ const Catalog: React.FC = () => {
   const [ data, setData ] = useState([]);
 
   useEffect(() => {
-    const fetchData = async() => {
-      const response = await fetch('api/catalog', { method: 'GET' });
+    fetchCatalogData();
+  }, []);
 
-      const normalizedResponse = await response.json();
+  const fetchCatalogData = async() => {
+    const response = await(await fetch('api/catalog', { method: 'GET' })).json();
 
-      setData(normalizedResponse.data);
-    };
-
-    fetchData();
-  });
+    setData(response.body);
+  };
 
   return (
     <>
