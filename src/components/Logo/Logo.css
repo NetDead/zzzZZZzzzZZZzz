@@ -1,0 +1,15 @@
+.logo {
+  margin: 0;
+}
+
+.logo__link {
+  color: inherit;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo__image {
+  order: -1;
+}
