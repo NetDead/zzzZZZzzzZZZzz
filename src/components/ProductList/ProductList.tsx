@@ -9,7 +9,7 @@ export const ProductList: React.FC<ProductListProps> = ({ data }) => {
       {data.map(item => (
         <ProductCard
           className='product-list__item'
-          key={item.name}
+          key={item.id}
           { ...item }
         />
       ))}

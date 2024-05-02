@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-
-import { RootState } from 'src/store';
+import { gql } from 'src/utils/gql';
 
 const initialState = {
   accountData: {},
@@ -10,14 +9,16 @@ export const fetchUser = createAsyncThunk(
   'user/fetchUser',
   async () => {
     try {
-      const response: { body: RootState } = await(await fetch('api/user', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-      })).json();
+      const { data } = await gql(`
+        query GetUser {
+          user {
+            id,
+            name
+          }
+        }
+      `);
 
-      return response.body;
+      return data;
     } catch (e) {
       throw new Error('Fetching user error');
     }
@@ -38,7 +39,5 @@ const userSlice = createSlice({
       );
   }
 });
-
-// export const selectUser = (state: RootState) => state.user;
 
 export const userReducer = userSlice.reducer;
