@@ -1,27 +1,27 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { gql } from 'src/utils/gql';
+import { client } from 'src/client';
+import { gql } from 'urql';
 
 const initialState = {
   accountData: {},
 };
 
+const UserQuery = gql`
+  query GetUser {
+    user {
+      id,
+      name,
+      email,
+    }
+  }
+`;
+
 export const fetchUser = createAsyncThunk(
   'user/fetchUser',
   async () => {
-    try {
-      const { data } = await gql(`
-        query GetUser {
-          user {
-            id,
-            name
-          }
-        }
-      `);
+    const { data } = await client.query(UserQuery, {});
 
-      return data;
-    } catch (e) {
-      throw new Error('Fetching user error');
-    }
+    return data;
   }
 );
 

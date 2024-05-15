@@ -1,20 +1,12 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from 'react-router-dom';
+import { Provider } from 'urql';
 
-import { Provider } from 'react-redux';
+import { client } from './client';
+
 import { store } from './store';
 
-import { Layout } from 'src/components/Layout';
-
-import { Catalog } from 'src/routes/Catalog';
-import { About } from 'src/routes/About';
-import { Contacts } from 'src/routes/Contacts';
-import { ErrorPage } from 'src/routes/ErrorPage';
-import { Login } from 'src/routes/Login';
+import { App } from 'src/App';
 
 import { fetchUser } from 'src/redux/user/userSlice';
 
@@ -26,41 +18,14 @@ async function enableMocking() {
   });
 }
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout/>,
-    errorElement: <ErrorPage/>,
-    children: [
-      {
-        path: 'catalog',
-        element: <Catalog/>,
-        index: true,
-      },
-      {
-        path: 'about',
-        element: <About/>,
-      },
-      {
-        path: 'contacts',
-        element: <Contacts/>,
-      },
-    ],
-  },
-  {
-    path: 'login',
-    element: <Login/>,
-  },
-]);
+await enableMocking();
 
-enableMocking().then(() => {
-  store.dispatch(fetchUser());
+store.dispatch(fetchUser());
 
-  createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
-    </React.StrictMode>,
-  );
-});
+createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <Provider value={client}>
+      <App/>
+    </Provider>
+  </React.StrictMode>,
+);

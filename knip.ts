@@ -5,8 +5,9 @@ export default {
     ],
   },
   // TODO: remove after hooks and types using
-  'ignore': [
+  ignore: [
     'src/hooks.ts',
     'src/store.ts',
+    'backend/**/*'
   ],
 };
