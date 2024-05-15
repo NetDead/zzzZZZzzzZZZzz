@@ -2,6 +2,12 @@ import { graphqlRequest } from './utils/graphql-request';
 
 import { USER } from 'src/mocks/entities/user';
 
-export const user = [
-  graphqlRequest('GetUser', USER),
-];
+const mocks = {
+  Query: {
+    user() {
+      return USER;
+    }
+  }
+};
+
+export const getUserMockSuccess = graphqlRequest('GetUser', mocks);

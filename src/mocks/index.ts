@@ -1,9 +1,9 @@
 import { setupWorker } from 'msw/browser';
 
-import { products } from 'src/mocks/products';
-import { user } from 'src/mocks/user';
+import { getProductsMockSuccess } from 'src/mocks/products';
+import { getUserMockSuccess } from 'src/mocks/user';
 
 export const worker = setupWorker(
-  ...products,
-  ...user,
+  getUserMockSuccess,
+  getProductsMockSuccess
 );
